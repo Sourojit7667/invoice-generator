@@ -53,16 +53,35 @@ function downloadPDF() {
 
 // ✅ Save Invoice to Local Storage
 function saveInvoice() {
-  const customerName = document.getElementById("customerName").value;
-  const contact = document.getElementById("customerContact").value;
-  const grandTotal = document.getElementById("grandTotal").innerText;
-
-  const entry = `${invoiceId} | ${date} | Rs. ${grandTotal}`;
-  let history = JSON.parse(localStorage.getItem("invoiceHistory") || "[]");
-  history.push(entry);
-  localStorage.setItem("invoiceHistory", JSON.stringify(history));
-  displayHistory();
-}
+    const customerName = document.getElementById("customerName").value;
+    const contact = document.getElementById("customerContact").value;
+    const grandTotal = document.getElementById("grandTotal").innerText;
+  
+    const invoiceData = {
+      invoiceId,
+      date,
+      customerName,
+      contact,
+      items: invoiceItems,
+      subtotal,
+      gst: subtotal * 0.18,
+      grandTotal
+    };
+  
+    // Save to Firebase
+    database.ref("invoices").push(invoiceData)
+      .then(() => alert("✅ Invoice saved to Firebase!"))
+      .catch((err) => alert("❌ Error saving invoice: " + err));
+  
+    // Also save locally for history UI
+    const entry = `${invoiceId} | ${date} | Rs. ${grandTotal}`;
+    let history = JSON.parse(localStorage.getItem("invoiceHistory") || "[]");
+    history.push(entry);
+    localStorage.setItem("invoiceHistory", JSON.stringify(history));
+    displayHistory();
+  }
+  
+  
 
 // ✅ Display Invoice History
 function displayHistory() {
@@ -96,3 +115,17 @@ if (savedDark) {
 toggle.addEventListener("change", () => {
   applyTheme(toggle.checked);
 });
+// firebase.js
+const firebaseConfig = {
+    databaseURL: "https://invoice-generator-68e98-default-rtdb.firebaseio.com/",
+    apiKey: "YOUR_API_KEY",
+    authDomain: "invoice-generator-68e98.firebaseapp.com",
+    projectId: "invoice-generator-68e98",
+    storageBucket: "invoice-generator-68e98.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+  
