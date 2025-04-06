@@ -1,0 +1,109 @@
+/* 🌈 Global */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ece9e6; /* Fallback color */
+    background: -webkit-linear-gradient(135deg, #ece9e6, #004080); /* For Safari/Chrome */
+    background: -moz-linear-gradient(135deg, #ece9e6, #004080);    /* For Firefox */
+    background: linear-gradient(135deg, #ece9e6, #004080);         /* Standard */
+    color: #000;
+  }
+  
+  /* 🟦 Header */
+ /* 🟦 Header Styling */
+.header {
+    background-color: #004080;
+    color: white;
+    padding: 100px 30px; /* Increased vertical padding */
+    font-size: 4rem;     /* Doubled from 2rem to 4rem */
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px; /* Extra space below header */
+  }
+  
+  
+.brand {
+    font-size: 12rem; /* Increased from 9rem to 12rem */
+    font-weight: bold;
+    margin-bottom: 50px; /* Added margin to create space below the brand name */
+}
+  /* 📦 Main Container */
+  .container {
+    background: #ffffff;
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  
+  /* 📱 Responsive */
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 15px;
+      margin: 10px;
+    }
+  
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .brand {
+      font-size: 2rem;
+    }
+  }
+  
+  /* 🧾 Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  /* 🧍 Inputs */
+  input {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px;
+  }
+  
+  /* 🔘 Buttons */
+  button {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 5px 0 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1565c0;
+  }
+  
+  /* 📄 History List */
+  #invoiceHistory {
+    padding-left: 20px;
+  }
+  
+  /* 🔻 Footer */
+  .footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 15px;
+  }
+  

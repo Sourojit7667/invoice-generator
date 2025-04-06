@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Souro's Appliances - Invoice Generator</title>
+  <style>
+    /* 🌈 Global */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #004080);
+      color: #000;
+    }
+
+    /* 🟦 Header */
+    .header {
+      background-color: #004080;
+      color: white;
+      padding: 50px 30px;
+      font-size: 4rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .brand {
+      font-size: 5rem; /* Increased size */
+      font-weight: bold;
+      margin-bottom: 50px; /* Added space below */
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="brand">Souro's Appliances</div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <label>Customer Name: <input type="text" id="customerName"></label>
+    <label>Contact: <input type="text" id="customerContact"></label><br><br>
+
+    <label>Item: <input type="text" id="item"></label>
+    <label>Qty: <input type="number" id="qty" step="0.01"></label>
+    <label>Price: <input type="number" id="price" step="0.01"></label>
+    <button onclick="addItem()">Add</button>
+
+    <p><strong>Invoice ID:</strong> <span id="invoiceId"></span></p>
+    <p><strong>Date:</strong> <span id="invoiceDate"></span></p>
+
+    <table id="invoiceTable">
+      <thead>
+        <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <p><strong>Subtotal:</strong> Rs. <span id="subtotal">0.00</span></p>
+    <p><strong>GST (18%):</strong> Rs. <span id="gst">0.00</span></p>
+    <p><strong>Grand Total:</strong> Rs. <span id="grandTotal">0.00</span></p>
+
+    <button onclick="downloadPDF()">Download PDF</button>
+    <button onclick="saveInvoice()">Save Invoice</button>
+
+    <h3>📄 Invoice History</h3>
+    <ul id="invoiceHistory"></ul>
+  </div>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ece9e6, #004080);
+    }
+  </style>
+
+  <!-- Footer -->
+  <div class="footer">
+    &copy; 2025 Souro's Appliances. All rights reserved.
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
